@@ -1,0 +1,32 @@
+{
+    "reviewList": [
+        {
+            "id":1,
+            "name":"The Lion King",
+            "reviews":[
+                {
+                    "review":"the best movie ever!",
+                    "rate":4
+                },
+                {
+                    "review":"the worst movie ever",
+                    "rate":10
+                }
+            ]
+        },
+        {
+            "id":2,
+            "name": "Fast Furious Presents: Hobbs Shaw",
+            "reviews":[
+                {
+                    "review":"the best movie ever!2",
+                    "rate":4
+                },
+                {
+                    "review":"the worst movie ever2",
+                    "rate":6
+                }
+            ]
+        }
+    ]  
+}
