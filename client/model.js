@@ -19,7 +19,7 @@ class Model{
     addReviewToMovie = (id,review) => {
         const dataBody = {
             "id": id,
-            "review":review
+            "review": review
         }
         return fetch(`http://localhost:8081`, {
             method: 'POST',
