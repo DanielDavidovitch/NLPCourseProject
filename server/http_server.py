@@ -47,7 +47,7 @@ class HttpServer_reviewAnalyzer(BaseHTTPRequestHandler):
         rate = int(round(probAndLabel['final_prob'] * 10))
         # The rate needs to be iversed if the label is NEGATIVE, so the rate will be lower
         # as the assurnace of negative grows
-        if probAndLabel['final_label'] == Label.NEGATIVE:
+        if probAndLabel['final_label'] == Label.NEGATIVE.name:
             rate = 10 - rate
         probAndLabel['rate'] = rate
 
