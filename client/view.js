@@ -25,7 +25,7 @@ class View{
     }
 
     renderReview = (review,rate) => {
-        this.reviewList.append(`<li class="${rate}">${review}</li>`);
+        this.reviewList.append(`<li class="${rate}" title="Rate: ${rate}">${review}</li>`);
     }
 
     loadReviews = (moviesData) => {
@@ -40,8 +40,8 @@ class View{
 
     addReviewEvent = () => {
         this.addReviewButton.on('click', (e) => {
-            this.addReviewToMovie(this.selectedMovieId,this.newReview.value).then((prob) => {
-                this.renderReview(this.newReview.value, parseInt(prob*10));
+            this.addReviewToMovie(this.selectedMovieId,this.newReview.value).then((rate) => {
+                this.renderReview(this.newReview.value, rate);
             });
         })
     }

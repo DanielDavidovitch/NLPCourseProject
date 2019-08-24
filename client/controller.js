@@ -15,16 +15,8 @@ class Controller {
 
     addReviewToMovie = (id,movie) => {
         return this.model.addReviewToMovie(id,movie).then((labelAndProb) => {
-            return this.normalizedRate(labelAndProb.final_label, labelAndProb.final_prob);
+            return labelAndProb.rate;
         });
-    }
-
-    normalizedRate = (label,prob) => {
-        if(label == 'POSITIVE'){
-            return prob
-        }else{
-            return 1-prob;
-        }
     }
 
     start = () => {
