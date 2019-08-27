@@ -25,7 +25,7 @@ class View{
     }
 
     renderReview = (review,rate) => {
-        this.reviewList.append(`<li class="${rate}" title="Rate: ${rate}">${review}</li>`);
+        this.reviewList.append(`<li class="${rate}" title="Rate: ${rate}/10">${review}</li>`);
     }
 
     loadReviews = () => {
