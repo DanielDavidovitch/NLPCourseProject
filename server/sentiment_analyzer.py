@@ -77,7 +77,7 @@ def getProbAndLabel(review):
         try:
             predicted_labels.append(predict_review_label(review, models[i])[0][0])
             predicted_probs.append(predict_review_prob(review, models[i])[0][0])
-            print("label: {}".format(predicted_labels[-1]))
+            print("label: {}".format(Label(predicted_labels[-1]).name))
             print("prob: {}".format(predicted_probs[-1]))
         except Exception as e:
             print("Unknown word:")

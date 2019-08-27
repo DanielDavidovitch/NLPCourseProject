@@ -25,7 +25,7 @@ class View{
     }
 
     renderReview = (review,rate) => {
-        this.reviewList.append(`<li class="${rate}">${review}</li>`);
+        this.reviewList.append(`<li class="${rate}" title="Rate: ${rate}">${review}</li>`);
     }
 
     loadReviews = () => {
@@ -44,12 +44,12 @@ class View{
     addReviewEvent = () => {
         const opacity = $("#opacity-div");
         this.addReviewButton.on('click', (e) => {
-            opacity.removeClass("displaynone");
-            opacity.addClass('opacitypage');
-            this.addReviewToMovie(this.selectedMovieId,this.newReview.value).then((prob) => {
-                this.renderReview(this.newReview.value, parseInt(prob*10));
-                opacity.removeClass("opacitypage");
-                opacity.addClass('displaynone');
+        opacity.removeClass("displaynone");
+        opacity.addClass('opacitypage');
+        this.addReviewToMovie(this.selectedMovieId,this.newReview.value).then((rate) => {
+            this.renderReview(this.newReview.value, rate);
+            opacity.removeClass("opacitypage");
+            opacity.addClass('displaynone');
             });
         })
     }
