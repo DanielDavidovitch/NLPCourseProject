@@ -10,14 +10,18 @@
         <script src="app.js" defer></script>
     </head>
     <body>
+            <div id="opacity-div" class="displaynone">
+                    <div class="lds-dual-ring"></div>
+            </div>
+
         <div id="header">
             <img id="imdb-logo" src="imdb.svg" alt="Kiwi standing on oval">
-            <span class="landing-hero">Hello and wellcom to out App!</span>
+            <span class="landing-hero">Hello and welcome to out App!</span>
             <sapn class="landing-description">Choose a movie to comment on</sapn>
             <div>
-                    <span id="movie-selector" type="button">select a movie</span>
-                    <ul id="movies-list" class="hide-movies">
-                    </ul>
+                    <!-- <span id="movie-selector" type="button">select a movie</span> -->
+                    <select id="movies-list">
+                    </select>
             </div>
             
         </div>
@@ -31,9 +35,10 @@
             <div id="reviews-aria">
                 <span class="title">Reviews</span>
                 <ul id="review_list">
+                    </ul>
             </div>
-            </ul>
         </div>
+
     </body>
 </html>
 

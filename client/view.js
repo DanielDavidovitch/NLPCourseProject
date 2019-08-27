@@ -12,7 +12,7 @@ class View{
 
     addMoviesToList = (moviesData) => {
         moviesData.reviewList.forEach((movie, index) => {
-            this.moviesList.append(`<li class='movieSelector' data-movie-id=${movie.id}>${movie.name}</a></li>`)
+            this.moviesList.append(`<option class='movieSelector' data-movie-id=${movie.id}>${movie.name}</option>`)
         })
         this.movieSelector = $('.movieSelector');
     }
@@ -28,35 +28,37 @@ class View{
         this.reviewList.append(`<li class="${rate}">${review}</li>`);
     }
 
-    loadReviews = (moviesData) => {
-        this.movieSelector.on('click',(e) => {
-            this.selectedMovieId = $(e.target).data('movieId');
+    loadReviews = () => {
+        this.selectedMovieId = this.moviesList.find(':selected').data('movieId');
             this.getMovieById(this.selectedMovieId).then((movie) => {
                 this.loadReviewsToDom(movie.reviews)
             })
-            // this.loadReviewsToDom(this.getMovieById(this.selectedMovieId).reviews);
+    }
+
+    loadReviewsEvent = () => {
+        this.moviesList.on('change',(e) => {
+            this.loadReviews();
         });   
     }
 
     addReviewEvent = () => {
+        const opacity = $("#opacity-div");
         this.addReviewButton.on('click', (e) => {
+            opacity.removeClass("displaynone");
+            opacity.addClass('opacitypage');
             this.addReviewToMovie(this.selectedMovieId,this.newReview.value).then((prob) => {
                 this.renderReview(this.newReview.value, parseInt(prob*10));
+                opacity.removeClass("opacitypage");
+                opacity.addClass('displaynone');
             });
         })
     }
 
-    showUlWhenClick = () => {
-        this.movieSelector.on('click', (e) => {
-            this.moviesList.toggleClass('show-movies');
-            this.moviesList.toggleClass('hide-movies');
-        })
-    }
 
     loadView = (moviesData) => {
-        this.showUlWhenClick();
         this.addMoviesToList(moviesData);
-        this.loadReviews(moviesData);
+        this.loadReviews();
+        this.loadReviewsEvent();
         this.addReviewEvent();
     }
 
