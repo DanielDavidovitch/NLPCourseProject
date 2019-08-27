@@ -1,7 +1,7 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 from urllib.parse import urlparse, parse_qs
-from sentiment_analyzer import getProbAndLable
+from sentiment_analyzer import getProbAndLabel
 
 class HttpServer_reviewAnalyzer(BaseHTTPRequestHandler):
 
@@ -38,7 +38,7 @@ class HttpServer_reviewAnalyzer(BaseHTTPRequestHandler):
         print(post_data)
         review = json.loads(post_data)['review']
         print(review)
-        probAndLabel = getProbAndLable(review)
+        probAndLabel = getProbAndLabel(review)
         print (probAndLabel)
         self._set_headers()
         self.wfile.write(bytes(json.dumps(probAndLabel),'utf8'))
