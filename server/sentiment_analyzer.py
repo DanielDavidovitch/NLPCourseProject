@@ -76,7 +76,11 @@ def getProbAndLabel(review):
         print("Testing model {0} out of {1}".format(i+1, len(models)))
         try:
             predicted_labels.append(predict_review_label(review, models[i])[0][0])
-            predicted_probs.append(predict_review_prob(review, models[i])[0][0])
+            prob = predict_review_prob(review, models[i])[0][0]
+            # The probability is for the label 1, so we need to adjust it if the label is 0
+            if predicted_labels[-1] == 0:
+                prob = 1 - prob
+            predicted_probs.append(prob)
             print("label: {}".format(Label(predicted_labels[-1]).name))
             print("prob: {}".format(predicted_probs[-1]))
         except Exception as e:
@@ -89,7 +93,7 @@ def getProbAndLabel(review):
     print("Final label: {}".format(Label(final_label).name))
     
     # Calculate the average label probability, using only the probabilities of the
-    # chosen label. 
+    # chosen label.
     final_prob = 0
     counted_probs = 0
     for i in range(len(predicted_probs)):
@@ -98,9 +102,6 @@ def getProbAndLabel(review):
             counted_probs += 1
     final_prob /= float(counted_probs)
 
-    # The probability is for the label 1, so we need to adjust it if the label is 0
-    if final_label.value == 0:
-        final_prob = 1 - final_prob
     print("Final prob: {}".format(final_prob))
 
     reviewProbAndLabel = {'final_label' : Label(final_label).name, "final_prob" : final_prob}
