@@ -87,6 +87,12 @@ def getProbAndLabel(review):
             print("Unknown word:")
             print(e)
             pass
+
+    # If for some reason none of the models succeed to evaluate the given review,
+    # return pre-defined values
+    if len(predicted_labels) == 0:
+        return {'final_label' : Label.POSITIVE.name, "final_prob" : 0.5}
+
     final_label = Label.POSITIVE \
         if predicted_labels.count(Label.POSITIVE.value) > predicted_labels.count(Label.NEGATIVE.value) \
         else Label.NEGATIVE
