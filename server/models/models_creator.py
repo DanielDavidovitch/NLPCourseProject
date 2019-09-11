@@ -10,10 +10,8 @@ Original file is located at
 # Uncomment and execute once - this is used to downgrade the pip version to one that doesn't cause an exception in keras
 # https://github.com/tensorflow/tensorflow/issues/28102#issuecomment-487612628
 !pip install numpy==1.16.2
-#!pip install tensorflow-gpu
 
 import numpy as np
-import tensorflow as tf
 import keras as keras
 from keras.models import Sequential, load_model
 from keras.layers import Bidirectional, Dense, Dropout, Flatten, SpatialDropout1D
@@ -41,13 +39,11 @@ class Model_1_Consts():
     BATCH_SIZE = 32
     
 class Model_2_Consts():
-    #VOCABULARY_SIZE = 10000
     VOCABULARY_SIZE = DATASET_SIZE
     EPOCHS_COUNT = 5
     BATCH_SIZE = 64
 
 class Model_3_Consts():
-    #VOCABULARY_SIZE = 10000
     VOCABULARY_SIZE = DATASET_SIZE
     EPOCHS_COUNT = 5
     BATCH_SIZE = 64
@@ -58,7 +54,6 @@ class Model_4_Consts():
     BATCH_SIZE = 128
     
 class Model_5_Consts():
-    #VOCABULARY_SIZE = 10000
     VOCABULARY_SIZE = DATASET_SIZE
     EPOCHS_COUNT = 1
     BATCH_SIZE = 128
@@ -206,6 +201,10 @@ print(model_3.evaluate(x_test, y_test))
 print("Saving model_3 to file in path: {}".format(MODEL_3_PATH))
 model_3.save(MODEL_3_PATH)
 print("Done")
+
+review = "i really hate this movie"
+print predict_text_label(review, model_3)
+print predict_text(review, model_3)
 
 model_4 = build_model_4()
 print("Training model_4")
