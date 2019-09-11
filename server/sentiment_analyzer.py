@@ -14,12 +14,13 @@ with warnings.catch_warnings():
     import keras
 
 from enum import Enum
+import os
 
-MODEL_1_PATH = r"model_1.hdf5"
-MODEL_2_PATH = r"model_2.hdf5"
-MODEL_3_PATH = r"model_3.hdf5"
-MODEL_4_PATH = r"model_4.hdf5"
-MODEL_5_PATH = r"model_5.hdf5"
+MODEL_1_PATH = os.path.join("models", "model_1.hdf5")
+MODEL_2_PATH = os.path.join("models", "model_2.hdf5")
+MODEL_3_PATH = os.path.join("models", "model_3.hdf5")
+MODEL_4_PATH = os.path.join("models", "model_4.hdf5")
+MODEL_5_PATH = os.path.join("models", "model_5.hdf5")
 
 # Pre-loading models
 models = []
