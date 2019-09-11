@@ -1,18 +1,19 @@
 
 
+
 In this project we use NLP techniques to complete the following task: given a (textual) movie review, determine whether it's positive of negative.
 In this project we implemented 5 different neural network models to perform sentiment analysis.
 
 The outcome of this project is a simple web application that allows submitting movie reviews, and then it automatically deducts a rating on a scale of 1 to 10 from that review.
 
-#### Execution instructions
+Execution instructions
+-
 
-* Use Python 3 to execute the server:
+* Use Python 3 to execute the server (Keras and numpy packages are required):
 ```
 > cd server
 > python http_server.py
 ```
-
 * Open index.html in a web browser to use the web application:
 Go to the folder "client" and double click on the file "index.html".
 
